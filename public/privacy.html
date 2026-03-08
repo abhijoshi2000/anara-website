@@ -8,10 +8,20 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1f2937; line-height: 1.6; padding: 0; margin: 0; background: #fafafa; }
     nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 960px; margin: 0 auto; }
-    .nav-brand { font-size: 18px; font-weight: 700; color: #1f2937; text-decoration: none; }
+    .nav-brand { font-size: 18px; font-weight: 700; color: #1f2937; text-decoration: none; white-space: nowrap; }
     .nav-links { display: flex; gap: 24px; }
     .nav-links a { font-size: 14px; color: #6b7280; text-decoration: none; font-weight: 500; }
     .nav-links a:hover { color: #6366f1; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; color: #6b7280; }
+    .nav-toggle svg { display: block; }
+    @media (max-width: 640px) {
+      .nav-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 56px; right: 24px; flex-direction: column; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 8px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); gap: 0; z-index: 50; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 24px; font-size: 15px; }
+      .nav-links a:hover { background: #f9fafb; }
+      nav { position: relative; }
+    }
     .content { max-width: 640px; margin: 0 auto; padding: 24px 20px 48px; }
     h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
     .updated { font-size: 14px; color: #6b7280; margin-bottom: 32px; }
@@ -23,10 +33,14 @@
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-brand">Anara: Gifts They'll Love</a>
+    <a href="/" class="nav-brand">Anara Gifts</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
     <div class="nav-links">
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
+      <a href="/affiliate-disclosure">Affiliate Disclosure</a>
       <a href="mailto:support@anaragifts.app">Support</a>
     </div>
   </nav>
